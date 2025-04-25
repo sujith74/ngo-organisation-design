@@ -81,25 +81,27 @@ const CharityWebsite = () => {
           
           {/* Button */}
           <motion.button 
-            className="flex items-center mt-auto text-amber-600 font-medium group"
-            animate={{ x: isHovered ? 5 : 0 }}
-          >
-            Learn More 
-            <motion.span 
-              className="ml-2"
-              animate={{ x: isHovered ? 5 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <ArrowRight size={16} />
-            </motion.span>
-          </motion.button>
+  className="flex items-center mt-auto text-amber-600 font-medium group"
+  animate={{ x: isHovered ? 5 : 0 }}
+  onClick={() => window.location.href = 'https://program-page-pearl.vercel.app/'}
+>
+  Learn More 
+  <motion.span 
+    className="ml-2"
+    animate={{ x: isHovered ? 5 : 0 }}
+    transition={{ duration: 0.2 }}
+  >
+    <ArrowRight size={16} />
+  </motion.span>
+</motion.button>
+
         </div>
       </motion.div>
     );
   }
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "About", href: "/https://about-us-two-indol.vercel.app/" },
     { name: "Projects", href: "/projects" },
     { name: "Volunteer", href: "/volunteer" },
     { name: "Community", href: "/community" },
@@ -593,24 +595,25 @@ const CharityWebsite = () => {
                   transition={{ delay: index * 0.1 + 0.6 }}
                   className="mt-4"
                 >
-                  <Button 
-                    fullWidth 
-                    variant="contained"
-                    component={motion.button}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    sx={{ 
-                      borderRadius: 6,
-                      textTransform: 'none',
-                     
-                      background: 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #d97706 0%, #b45309 100%)',
-                      }
-                    }}
-                  >
-                    Donate Now
-                  </Button>
+                 <Button 
+  fullWidth 
+  variant="contained"
+  component={motion.button}
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.97 }}
+  onClick={() => window.location.href = 'https://campaign-template-2.vercel.app/'}
+  sx={{ 
+    borderRadius: 6,
+    textTransform: 'none',
+    background: 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)',
+    '&:hover': {
+      background: 'linear-gradient(90deg, #d97706 0%, #b45309 100%)',
+    }
+  }}
+>
+  Donate Now
+</Button>
+
                 </motion.div>
               </CardContent>
             </MotionCard>
