@@ -101,11 +101,11 @@ const CharityWebsite = () => {
   }
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/https://about-us-two-indol.vercel.app/" },
+    { name: "About", href: "https://about-us-two-indol.vercel.app/" },
     { name: "Projects", href: "/projects" },
     { name: "Volunteer", href: "/volunteer" },
     { name: "Community", href: "/community" },
-    { name: "Blog", href: "/blog" }
+    { name: "LogIn", href: "/LogIn" }
   ];
 
 
@@ -208,19 +208,37 @@ const CharityWebsite = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link href={link.href} className="px-4 py-2 rounded-lg text-white hover:bg-amber-600/50 hover:text-amber-100 transition-all duration-300 font-medium text-sm">
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
+  {navLinks.map((link, index) => {
+    const isExternal = link.href.startsWith("http");
+    return (
+      <motion.div
+        key={link.name}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        {isExternal ? (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 rounded-lg text-white hover:bg-amber-600/50 hover:text-amber-100 transition-all duration-300 font-medium text-sm"
+          >
+            {link.name}
+          </a>
+        ) : (
+          <Link
+            href={link.href}
+            className="px-4 py-2 rounded-lg text-white hover:bg-amber-600/50 hover:text-amber-100 transition-all duration-300 font-medium text-sm"
+          >
+            {link.name}
+          </Link>
+        )}
+      </motion.div>
+    );
+  })}
+</nav>
+
 
           {/* CTA Button with pulse animation */}
           <motion.div
