@@ -36,7 +36,7 @@ import {
   ChevronRight, Heart, BookOpen, Activity
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { InitiativesSection } from './components/page';
+import { InitiativesSection } from './components/InitiativesSection';
 const MotionCard = motion(Card);
 const MotionImage = motion(Image);
 

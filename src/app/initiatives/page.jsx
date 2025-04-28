@@ -1,4 +1,4 @@
-import { InitiativesSection } from '../components/page';
+import { InitiativesSection } from '../components/InitiativesSection';
 
 export default function InitiativesPage() {
   return (
