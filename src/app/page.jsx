@@ -201,6 +201,22 @@ const CharityWebsite = () => {
     }
   ];
 
+  const palettes = {
+    primary: {
+      light: "#4C9F38",
+      main: "#4C9F38",
+      dark: "#4C9F38",
+      contrastText: "#fff"
+    },
+    secondary: {
+      light: "#eecd5e",
+      main: "#E9BD29",
+      dark: "#d5a916",
+      contrastText: "#000"
+    }
+  };
+  
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation Bar */}
@@ -259,12 +275,17 @@ const CharityWebsite = () => {
             whileTap={{ scale: 0.95 }}
             className="hidden md:block"
           >
-            <Button 
-              variant="contained" 
-              className="bg-amber-200 hover:bg-amber-300 text-amber-900 font-bold px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all"
-            >
-              Contact Now
-            </Button>
+           <Button 
+  variant="contained" 
+  style={{
+    backgroundColor: palettes.secondary.main,
+    color: palettes.secondary.contrastText,
+  }}
+  className="font-bold px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all"
+>
+  Contact Now
+</Button>
+
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -398,12 +419,17 @@ const CharityWebsite = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button 
-                  variant="contained" 
-                  className="bg-amber-300 hover:bg-amber-400 text-amber-900 font-bold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
-                >
-                  Donate Now
-                </Button>
+               <Button 
+  variant="contained" 
+  style={{
+    backgroundColor: palettes.secondary.main,
+    color: palettes.secondary.contrastText,
+  }}
+  className="font-bold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
+>
+  Donate Now
+</Button>
+
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -605,14 +631,20 @@ const CharityWebsite = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-medium rounded-lg shadow-lg shadow-amber-200 flex items-center justify-center"
-              >
-                <Heart size={18} className="mr-2" />
-                Donate Now
-              </motion.button>
+            <motion.button 
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.98 }}
+  style={{
+    background: `linear-gradient(to right, ${palettes.secondary.light}, ${palettes.secondary.main})`,
+    color: palettes.secondary.contrastText,
+  }}
+  className="px-6 py-3 font-medium rounded-lg shadow-lg flex items-center justify-center transition-all"
+>
+  <Heart size={18} className="mr-2" />
+  Donate Now
+</motion.button>
+
+
               
               <motion.button 
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(251, 191, 36, 0.1)" }}
