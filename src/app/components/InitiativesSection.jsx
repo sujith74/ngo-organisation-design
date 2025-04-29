@@ -17,6 +17,21 @@ import { motion } from 'framer-motion';
 const MotionCard = motion(MuiCard);
 const MotionImage = motion(Image);
 
+const palettes = {
+  primary: {
+    light: "#4C9F38",
+    main: "#4C9F38",
+    dark: "#4C9F38",
+    contrastText: "#fff"
+  },
+  secondary: {
+    light: "#eecd5e",
+    main: "#E9BD29",
+    dark: "#d5a916",
+    contrastText: "#000"
+  }
+};
+
 // Animation variants
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -179,24 +194,26 @@ export function InitiativesSection() {
                       transition={{ delay: index * 0.1 + 0.6 }}
                       className="mt-4"
                     >
-                      <Button 
-                        fullWidth 
-                        variant="contained"
-                        component={motion.button}
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        onClick={() => window.location.href = 'https://campaign-template-2.vercel.app/'}
-                        sx={{ 
-                          borderRadius: 6,
-                          textTransform: 'none',
-                          background: 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)',
-                          '&:hover': {
-                            background: 'linear-gradient(90deg, #d97706 0%, #b45309 100%)',
-                          }
-                        }}
-                      >
-                        Donate Now
-                      </Button>
+                     <Button  
+  fullWidth
+  variant="contained"
+  component={motion.button}
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.97 }}
+  onClick={() => window.location.href = 'https://campaign-template-2.vercel.app/'}
+  sx={{ 
+    borderRadius: 6,
+    textTransform: 'none',
+    color: palettes.secondary.contrastText,
+    background: `linear-gradient(90deg, ${palettes.secondary.light} 0%, ${palettes.secondary.main} 100%)`,
+    '&:hover': {
+      background: `linear-gradient(90deg, ${palettes.secondary.main} 0%, ${palettes.secondary.dark} 100%)`,
+    },
+  }}
+>
+  Donate Now
+</Button>
+
                     </motion.div>
                   </CardContent>
                 </MotionCard>
@@ -212,27 +229,29 @@ export function InitiativesSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Button
-                variant="contained"
-                component={motion.button}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleSeeMore}
-                sx={{
-                  px: 5,
-                  py: 1.5,
-                  borderRadius: 6,
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  textTransform: 'none',
-                  background: 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)',
-                  '&:hover': {
-                    background: 'linear-gradient(90deg, #d97706 0%, #b45309 100%)',
-                  }
-                }}
-              >
-                See More Causes
-              </Button>
+            <Button
+  variant="contained"
+  component={motion.button}
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={handleSeeMore}
+  sx={{
+    px: 5,
+    py: 1.5,
+    borderRadius: 6,
+    fontSize: '1rem',
+    fontWeight: 600,
+    textTransform: 'none',
+    color: palettes.secondary.contrastText,
+    background: `linear-gradient(90deg, ${palettes.secondary.light} 0%, ${palettes.secondary.main} 100%)`,
+    '&:hover': {
+      background: `linear-gradient(90deg, ${palettes.secondary.main} 0%, ${palettes.secondary.dark} 100%)`,
+    }
+  }}
+>
+  See More Causes
+</Button>
+
             </motion.div>
           </div>
         )}

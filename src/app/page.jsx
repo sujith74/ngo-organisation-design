@@ -784,13 +784,23 @@ const CharityWebsite = () => {
       viewport={{ once: true }}
       className="text-center mt-16"
     >
-      <Button
-        variant="contained"
-        className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all"
-        endIcon={<span>→</span>}
-      >
-        Join Our Team
-      </Button>
+<Button
+  variant="contained"
+  style={{
+    backgroundImage: `linear-gradient(to right, ${palettes.secondary.light}, ${palettes.secondary.main})`,
+    color: palettes.secondary.contrastText,
+  }}
+  className="px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+  onMouseEnter={(e) => {
+    e.currentTarget.style.backgroundImage = `linear-gradient(to right, ${palettes.secondary.main}, ${palettes.secondary.dark})`;
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.backgroundImage = `linear-gradient(to right, ${palettes.secondary.light}, ${palettes.secondary.main})`;
+  }}
+  endIcon={<span>→</span>}
+>
+  Join Our Team
+</Button>
     </motion.div>
   </Container>
 </section>
