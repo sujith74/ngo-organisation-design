@@ -185,7 +185,7 @@ const ContactUs = () => {
         </Box>
 
         {/* Contact Form Section */}
-        <Box className="bg-gradient-to-r from-amber-800 to-amber-700 py-16">
+        <Box className="bg-amber-700 py-16">
           <Container maxWidth="lg">
             <Grid container spacing={4}>
               <Grid item xs={12}>
