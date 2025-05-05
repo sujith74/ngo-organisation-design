@@ -42,11 +42,12 @@ const MotionImage = motion(Image);
 
 
 const CharityWebsite = () => {
+  
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
- 
+
 
   // const causesData = [
   //   { image: "https://cdn.pixabay.com/photo/2017/12/08/11/53/event-party-3005668_1280.jpg", title: "Sun Harmony School Supports", goal: 65000, raised: 37000, category: "Education" },
@@ -117,7 +118,7 @@ const CharityWebsite = () => {
     { name: "About", href: "https://next-app-about-us.vercel.app/" },
     { name: "Projects", href: "/projects" },
     { name: "Volunteer", href: "/volunteer" },
-    { name: "Community", href: "/community" },
+    { name: "Contact", href: "/contact" },
     { name: "LogIn", href: "/LogIn" }
   ];
 
@@ -282,8 +283,9 @@ const CharityWebsite = () => {
     color: palettes.secondary.contrastText,
   }}
   className="font-bold px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all"
+
 >
-  Contact Now
+  Donate Now
 </Button>
 
           </motion.div>
