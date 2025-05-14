@@ -12,25 +12,27 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import {  usePalette } from '../context/PaletteContext.jsx';
+
 
 // Motion components
 const MotionCard = motion(MuiCard);
 const MotionImage = motion(Image);
 
-const palettes = {
-  primary: {
-    light: "#4C9F38",
-    main: "#4C9F38",
-    dark: "#4C9F38",
-    contrastText: "#fff"
-  },
-  secondary: {
-    light: "#eecd5e",
-    main: "#E9BD29",
-    dark: "#d5a916",
-    contrastText: "#000"
-  }
-};
+// const palettes = {
+//   primary: {
+//     light: "#4C9F38",
+//     main: "#4C9F38",
+//     dark: "#4C9F38",
+//     contrastText: "#fff"
+//   },
+//   secondary: {
+//     light: "#eecd5e",
+//     main: "#E9BD29",
+//     dark: "#d5a916",
+//     contrastText: "#000"
+//   }
+// };
 
 // Animation variants
 const cardVariants = {
@@ -87,6 +89,8 @@ export function InitiativesSection() {
       window.location.href = '/initiatives';
     }
   };
+    const { palettes } = usePalette();
+  
 
   return (
     <section className="py-16 bg-gradient-to-b from-amber-100 to-white">
@@ -205,9 +209,9 @@ export function InitiativesSection() {
     borderRadius: 6,
     textTransform: 'none',
     color: palettes.secondary.contrastText,
-    background: `linear-gradient(90deg, ${palettes.secondary.light} 0%, ${palettes.secondary.main} 100%)`,
+    background: ` ${palettes.secondary.main}`,
     '&:hover': {
-      background: `linear-gradient(90deg, ${palettes.secondary.main} 0%, ${palettes.secondary.dark} 100%)`,
+      background: ` ${palettes.secondary.dark}`,
     },
   }}
 >
@@ -243,9 +247,9 @@ export function InitiativesSection() {
     fontWeight: 600,
     textTransform: 'none',
     color: palettes.secondary.contrastText,
-    background: `linear-gradient(90deg, ${palettes.secondary.light} 0%, ${palettes.secondary.main} 100%)`,
+    background: ` ${palettes.secondary.main} `,
     '&:hover': {
-      background: `linear-gradient(90deg, ${palettes.secondary.main} 0%, ${palettes.secondary.dark} 100%)`,
+      background: ` ${palettes.secondary.dark} `,
     }
   }}
 >

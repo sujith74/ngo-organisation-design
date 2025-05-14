@@ -1,5 +1,6 @@
 
 'use client'
+
 import React from 'react';
 import { useState, useRef } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
@@ -37,6 +38,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { InitiativesSection } from './components/InitiativesSection';
+import { PaletteProvider, usePalette } from './context/PaletteContext.jsx';
+
 const MotionCard = motion(Card);
 const MotionImage = motion(Image);
 
@@ -47,6 +50,7 @@ const CharityWebsite = () => {
   const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
 
   // const causesData = [
@@ -113,11 +117,13 @@ const CharityWebsite = () => {
       </motion.div>
     );
   }
+
+  
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "https://next-app-about-us.vercel.app/" },
     { name: "Projects", href: "/projects" },
-    { name: "Volunteer", href: "/volunteer" },
+    { name: "Custom-Ui", href: "/custom-ui" },
     { name: "Contact", href: "/contact" },
     { name: "LogIn", href: "/LogIn" }
   ];
@@ -202,23 +208,26 @@ const CharityWebsite = () => {
     }
   ];
 
-  const palettes = {
-    primary: {
-      light: "#4C9F38",
-      main: "#4C9F38",
-      dark: "#4C9F38",
-      contrastText: "#fff"
-    },
-    secondary: {
-      light: "#eecd5e",
-      main: "#E9BD29",
-      dark: "#d5a916",
-      contrastText: "#000"
-    }
-  };
-  
+  // const palettes = {
+  //   primary: {
+  //     light: "#4C9F38",
+  //     main: "#4C9F38",
+  //     dark: "#4C9F38",
+  //     contrastText: "#fff"
+  //   },
+  //   secondary: {
+  //     light: "#eecd5e",
+  //     main: "#E9BD29",
+  //     dark: "#d5a916",
+  //     contrastText: "#000"
+  //   }
+  // };
 
+  const { palettes } = usePalette();
+
+  
   return (
+    
     <div className="flex flex-col min-h-screen">
       {/* Navigation Bar */}
       <header className="bg-gradient-to-r from-amber-800 to-amber-700 text-white sticky top-0 z-50 shadow-lg">
@@ -281,8 +290,10 @@ const CharityWebsite = () => {
   style={{
     backgroundColor: palettes.secondary.main,
     color: palettes.secondary.contrastText,
+    borderRadius:palettes.secondary.radius,
+    fontSize: palettes.secondary.size,
   }}
-  className="font-bold px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all"
+  // className="font-bold px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all"
 
 >
   Donate Now
@@ -426,6 +437,8 @@ const CharityWebsite = () => {
   style={{
     backgroundColor: palettes.secondary.main,
     color: palettes.secondary.contrastText,
+    borderRadius:palettes.secondary.radius,
+    fontSize: palettes.secondary.size,
   }}
   className="font-bold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
 >
@@ -637,8 +650,10 @@ const CharityWebsite = () => {
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.98 }}
   style={{
-    background: `linear-gradient(to right, ${palettes.secondary.light}, ${palettes.secondary.main})`,
+    backgroundColor: palettes.secondary.main,
     color: palettes.secondary.contrastText,
+    borderRadius:palettes.secondary.radius,
+    fontSize: palettes.secondary.size,
   }}
   className="px-6 py-3 font-medium rounded-lg shadow-lg flex items-center justify-center transition-all"
 >
@@ -789,15 +804,17 @@ const CharityWebsite = () => {
 <Button
   variant="contained"
   style={{
-    backgroundImage: `linear-gradient(to right, ${palettes.secondary.light}, ${palettes.secondary.main})`,
+    backgroundColor: palettes.secondary.main,
     color: palettes.secondary.contrastText,
+    borderRadius:palettes.secondary.radius,
+    fontSize: palettes.secondary.size,
   }}
   className="px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all"
   onMouseEnter={(e) => {
-    e.currentTarget.style.backgroundImage = `linear-gradient(to right, ${palettes.secondary.main}, ${palettes.secondary.dark})`;
+    e.currentTarget.style.backgroundImage = ` ${palettes.secondary.dark})`;
   }}
   onMouseLeave={(e) => {
-    e.currentTarget.style.backgroundImage = `linear-gradient(to right, ${palettes.secondary.light}, ${palettes.secondary.main})`;
+    e.currentTarget.style.backgroundImage = `${palettes.secondary.main})`;
   }}
   endIcon={<span>→</span>}
 >
@@ -915,7 +932,13 @@ const CharityWebsite = () => {
     <div className="text-center mt-16">
       <Button 
         variant="contained" 
-        className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+        style={{
+          backgroundColor: palettes.secondary.main,
+          color: palettes.secondary.contrastText,
+          borderRadius:palettes.secondary.radius,
+          fontSize: palettes.secondary.size,
+        }}
+        className="  px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all"
       >
         Share Your Story
       </Button>
@@ -1118,4 +1141,13 @@ const CharityWebsite = () => {
   );
 };
 
-export default CharityWebsite;
+const PageWithProvider = () => {
+  return (
+    <PaletteProvider>
+      <CharityWebsite />
+    </PaletteProvider>
+  );
+};
+
+
+export default PageWithProvider;
