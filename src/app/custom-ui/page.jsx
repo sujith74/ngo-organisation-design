@@ -262,6 +262,10 @@ export default function CustomUI() {
             {comp}
           </button>
         ))}
+
+<div className="absolute bottom-4 text-xs text-gray-400">
+    v1.0 UI Editor
+  </div>
       </div>
 
       {/* Main Content */}
