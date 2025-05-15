@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePalette } from "../context/PaletteContext.jsx";
 import { Button, Card, CardContent } from "@mui/material";
-
+// import { useNavigate } from "react-router-dom";
 // Options
 const colorOptions = [ 
   { label: "Royal Blue", value: "#2563EB", dark: "#1E40AF" },
@@ -57,6 +57,7 @@ const getContrastTextColor = (hex) => {
 };
 
 export default function CustomUI() {
+  // const navigate = useNavigate();
   const router = useRouter();
   const {
     palettes = {
@@ -122,6 +123,19 @@ export default function CustomUI() {
   const inputClass = "w-full text-gray-700 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400";
   const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
+
+  const handlePreviewTemplate = () => {
+    const params = new URLSearchParams({
+      color: palettes.secondary.main,
+      radius: palettes.secondary.radius,
+      size: palettes.secondary.size,
+      cardRadius: palettes.card.radius,
+      cardShadow: palettes.card.shadow,
+      cardTextSize: palettes.card.textSize,
+    }).toString();
+  
+    router.push(`/preview?${params}`); // ✅ use push() not function call
+  };
   const renderButtonEditor = () => (
     <div className="space-y-6">
       <div>
@@ -270,7 +284,17 @@ export default function CustomUI() {
 
       {/* Main Content */}
       <div className="flex-1 p-10 space-y-8">
+        <div className="flex justify-between">
         <h1 className="text-3xl font-bold text-gray-800">{selectedComponent} Customizer</h1>
+        <div className="mt-6 flex justify-center">
+      <button
+        onClick={handlePreviewTemplate}
+        className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-blue-700 transition"
+      >
+        Preview Template
+      </button>
+    </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Editor */}
@@ -284,14 +308,22 @@ export default function CustomUI() {
           {/* Preview */}
           <div className="bg-white p-6 rounded-2xl shadow-lg">
             <h2 className="text-xl font-semibold mb-4 text-gray-800">Live Preview</h2>
-            <div className="flex justify-center items-center h-full p-4">
+            <div className="flex flex-wrap justify-center items-center h-full p-4">
               {selectedComponent === "Button" ? renderButtonPreview() : renderCardPreview()}
+
+              
             </div>
+            {/* New Preview Template Button */}
+   
+
+
+
+            
           </div>
         </div>
 
         {/* Final Apply Button */}
-        <div className="flex justify-center pt-6">
+        <div className="flex justify-center ml-20 pt-6">
           <Button
             onClick={navigateHome}
             onMouseEnter={() => setHovering(true)}
@@ -312,6 +344,7 @@ export default function CustomUI() {
           </Button>
         </div>
       </div>
-    </div>
+      </div>
+    
   );
 }
