@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const PaletteContext = createContext();
@@ -15,8 +15,13 @@ const defaultPalette = {
     main: "#E9BD29",
     dark: "#d5a916",
     contrastText: "#000",
-    radius: "12px", // default radius
-    size: "16px"     // default size
+    radius: "12px", // default button radius
+    size: "16px"    // default text size
+  },
+  card: {
+    radius: "12px", // default card radius
+    shadow: "0 4px 6px rgba(0,0,0,0.1)", // default card shadow
+    textSize: "16px" // default card text size
   }
 };
 
@@ -38,6 +43,7 @@ export const PaletteProvider = ({ children }) => {
     }
   }, [palettes]);
 
+  // Button/Secondary updates
   const updateSecondaryMain = (newColor) => {
     setPalettes((prev) => ({
       ...prev,
@@ -88,6 +94,37 @@ export const PaletteProvider = ({ children }) => {
     }));
   };
 
+  // Card updates
+  const updateCardRadius = (newRadius) => {
+    setPalettes((prev) => ({
+      ...prev,
+      card: {
+        ...prev.card,
+        radius: newRadius
+      }
+    }));
+  };
+
+  const updateCardShadow = (newShadow) => {
+    setPalettes((prev) => ({
+      ...prev,
+      card: {
+        ...prev.card,
+        shadow: newShadow
+      }
+    }));
+  };
+
+  const updateCardTextSize = (newSize) => {
+    setPalettes((prev) => ({
+      ...prev,
+      card: {
+        ...prev.card,
+        textSize: newSize
+      }
+    }));
+  };
+
   if (!palettes) return null;
 
   return (
@@ -98,7 +135,10 @@ export const PaletteProvider = ({ children }) => {
         updateSecondaryContrast,
         updateSecondaryDark,
         updateSecondaryRadius,
-        updateSecondarySize
+        updateSecondarySize,
+        updateCardRadius,
+        updateCardShadow,
+        updateCardTextSize
       }}
     >
       {children}

@@ -51,6 +51,7 @@ const CharityWebsite = () => {
   const sectionRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const { palettes } = usePalette();
 
 
   // const causesData = [
@@ -68,7 +69,8 @@ const CharityWebsite = () => {
 
   function ServiceCard({ service, index }) {
     const [isHovered, setIsHovered] = useState(false);
-    
+    const { palettes } = usePalette();
+  
     return (
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -77,42 +79,54 @@ const CharityWebsite = () => {
         whileHover={{ y: -8 }}
         className="h-full"
       >
-        <div 
-          className="bg-white rounded-2xl p-8 h-full flex flex-col shadow-lg border border-gray-100 relative overflow-hidden"
+        <div
+          className="relative bg-white p-8 h-full flex flex-col border border-gray-100 overflow-hidden transition-shadow duration-300"
+          style={{
+            borderRadius: palettes.card.radius,
+            boxShadow: palettes.card.shadow,
+            fontSize: palettes.card.textSize,
+          }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Background shape */}
-          <div className={`absolute -right-16 -top-16 w-32 h-32 rounded-full opacity-10 ${service.color}`}></div>
-          
+          <div
+            className={`absolute -right-16 -top-16 w-32 h-32 rounded-full opacity-10 ${service.color}`}
+          ></div>
+  
           {/* Icon */}
-          <motion.div 
+          <motion.div
             className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-6 ${service.color}`}
             whileHover={{ rotate: 10, scale: 1.1 }}
           >
             {service.icon}
           </motion.div>
-          
-          {/* Content */}
-          <h3 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h3>
-          <p className="text-gray-600 mb-6 flex-grow">{service.desc}</p>
-          
-          {/* Button */}
-          <motion.button 
-  className="flex items-center mt-auto text-amber-600 font-medium group"
-  animate={{ x: isHovered ? 5 : 0 }}
-  onClick={() => window.location.href = 'https://program-page-pearl.vercel.app/'}
->
-  Learn More 
-  <motion.span 
-    className="ml-2"
-    animate={{ x: isHovered ? 5 : 0 }}
-    transition={{ duration: 0.2 }}
-  >
-    <ArrowRight size={16} />
-  </motion.span>
-</motion.button>
-
+  
+          {/* Title */}
+          <h3 className="text-xl font-bold mb-3 text-gray-800">
+            {service.title}
+          </h3>
+  
+          {/* Description */}
+          <p className="text-gray-600 mb-6 flex-grow">
+            {service.desc}
+          </p>
+  
+          {/* Learn More Button */}
+          <motion.button
+            className="flex items-center mt-auto text-amber-600 font-medium group"
+            animate={{ x: isHovered ? 5 : 0 }}
+            onClick={() => window.location.href = "https://program-page-pearl.vercel.app/"}
+          >
+            Learn More
+            <motion.span
+              className="ml-2"
+              animate={{ x: isHovered ? 5 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ArrowRight size={16} />
+            </motion.span>
+          </motion.button>
         </div>
       </motion.div>
     );
@@ -223,7 +237,6 @@ const CharityWebsite = () => {
   //   }
   // };
 
-  const { palettes } = usePalette();
 
   
   return (
