@@ -553,7 +553,7 @@ const CharityWebsite = () => {
         </motion.div>
       </section>
       {/* Services Section */}
-      <section className="py-24 ">
+      <section className="py-24 bg-white">
   {/* Shared container for consistent alignment */}
   <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <motion.div
