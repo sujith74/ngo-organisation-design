@@ -14,7 +14,7 @@ const defaultPalette = {
     light: "#eecd5e",
     main: "#363636",
     dark: "#d5a916",
-    contrastText: "#000",
+    contrastText: "#fff",
     radius: "12px", // default button radius
     size: "16px"    // default text size
   },
