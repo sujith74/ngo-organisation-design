@@ -1,5 +1,5 @@
 import { InitiativesSection } from '../components/InitiativesSection';
-import { PaletteProvider } from './context/PaletteContext.jsx';
+import { PaletteProvider } from '../context/PaletteContext.jsx';
 
 
 export default function InitiativesPage() {
