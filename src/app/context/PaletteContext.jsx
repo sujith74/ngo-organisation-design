@@ -12,7 +12,7 @@ const defaultPalette = {
   },
   secondary: {
     light: "#eecd5e",
-    main: "#E9BD29",
+    main: "#363636",
     dark: "#d5a916",
     contrastText: "#000",
     radius: "12px", // default button radius
@@ -22,6 +22,14 @@ const defaultPalette = {
     radius: "12px", // default card radius
     shadow: "0 4px 6px rgba(0,0,0,0.1)", // default card shadow
     textSize: "16px" // default card text size
+  },
+  text: {
+    headingFont: "'Roboto', sans-serif",
+    headingWeight: "700",
+    subheadingFont: "'Open Sans', sans-serif",
+    subheadingWeight: "400",
+    headingColor: "#000000",
+    subheadingColor: "#333333"
   }
 };
 
@@ -125,6 +133,67 @@ export const PaletteProvider = ({ children }) => {
     }));
   };
 
+  // Text updates
+  const updateHeadingFont = (newFont) => {
+    setPalettes((prev) => ({
+      ...prev,
+      text: {
+        ...prev.text,
+        headingFont: newFont
+      }
+    }));
+  };
+
+  const updateHeadingWeight = (newWeight) => {
+    setPalettes((prev) => ({
+      ...prev,
+      text: {
+        ...prev.text,
+        headingWeight: newWeight
+      }
+    }));
+  };
+
+  const updateSubheadingFont = (newFont) => {
+    setPalettes((prev) => ({
+      ...prev,
+      text: {
+        ...prev.text,
+        subheadingFont: newFont
+      }
+    }));
+  };
+
+  const updateSubheadingWeight = (newWeight) => {
+    setPalettes((prev) => ({
+      ...prev,
+      text: {
+        ...prev.text,
+        subheadingWeight: newWeight
+      }
+    }));
+  };
+
+  const updateHeadingColor = (newColor) => {
+    setPalettes((prev) => ({
+      ...prev,
+      text: {
+        ...prev.text,
+        headingColor: newColor
+      }
+    }));
+  };
+
+  const updateSubheadingColor = (newColor) => {
+    setPalettes((prev) => ({
+      ...prev,
+      text: {
+        ...prev.text,
+        subheadingColor: newColor
+      }
+    }));
+  };
+
   if (!palettes) return null;
 
   return (
@@ -138,7 +207,13 @@ export const PaletteProvider = ({ children }) => {
         updateSecondarySize,
         updateCardRadius,
         updateCardShadow,
-        updateCardTextSize
+        updateCardTextSize,
+        updateHeadingFont,
+        updateHeadingWeight,
+        updateSubheadingFont,
+        updateSubheadingWeight,
+        updateHeadingColor,
+        updateSubheadingColor
       }}
     >
       {children}

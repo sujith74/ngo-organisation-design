@@ -93,12 +93,17 @@ export function InitiativesSection() {
   
 
   return (
-    <section className="py-16 bg-gradient-to-b from-amber-100 to-white">
+    <section className="py-16 bg-white">
       <Container>
-        <Typography variant="h4" component="h2" className="text-center font-bold !mb-2 text-amber-600" sx={{ fontWeight: '700', mb: 2 }}>
+        <Typography variant="h4" component="h2" className="text-center font-bold !mb-2 text-amber-600" 
+           sx={{ fontFamily: palettes.text.headingFont, fontWeight: palettes.text.headingWeight, mb:2 }}
+
+        >
           {pathname === '/initiatives' ? 'All Initiatives' : 'Featured Causes'}
         </Typography>
-        <Typography variant="body1" className="text-center text-gray-600 !mb-8">
+        <Typography variant="body1" className="text-center text-gray-600 !mb-8"
+            sx={{ fontFamily: palettes.text.subheadingFont, fontWeight: palettes.text.subheadingFont }}
+>
           Support these charitable initiatives
         </Typography>
 

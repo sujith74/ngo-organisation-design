@@ -2,7 +2,7 @@
 'use client'
 
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef,useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import StarIcon from '@mui/icons-material/Star'
 import { 
@@ -96,7 +96,7 @@ const CharityWebsite = () => {
   
           {/* Icon */}
           <motion.div
-            className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-6 ${service.color}`}
+            className={`w-16 h-16 rounded-2xl flex items-center bg-amber-600 justify-center text-white mb-6 `}
             whileHover={{ rotate: 10, scale: 1.1 }}
           >
             {service.icon}
@@ -124,7 +124,7 @@ const CharityWebsite = () => {
               animate={{ x: isHovered ? 5 : 0 }}
               transition={{ duration: 0.2 }}
             >
-              <ArrowRight size={16} />
+              <ArrowRight size={16}  />
             </motion.span>
           </motion.button>
         </div>
@@ -236,6 +236,46 @@ const CharityWebsite = () => {
   //     contrastText: "#000"
   //   }
   // };
+
+//   const srcDoc = `
+//   <html>
+//     <head>
+//       <style>${cssCode}</style>
+//     </head>
+//     <body>
+//       ${htmlCode}
+//       <script>${jsCode}<\/script>
+//     </body>
+//   </html>
+// `;
+// const [srcDoc, setSrcDoc] = useState('');
+// useEffect(() => {
+//   if (!srcDoc) return;
+
+//   const container = document.getElementById('custom-content-container');
+//   if (!container) return;
+
+//   // Clear old content
+//   container.innerHTML = '';
+
+//   // Create a style element for CSS
+//   const style = document.createElement('style');
+//   style.innerHTML = cssCode || '';
+
+//   // Create a div for HTML content
+//   const htmlWrapper = document.createElement('div');
+//   htmlWrapper.innerHTML = htmlCode || '';
+
+//   // Create a script tag for JS (optional)
+//   const script = document.createElement('script');
+//   script.type = 'text/javascript';
+//   script.innerHTML = jsCode || '';
+
+//   // Append to container
+//   container.appendChild(style);
+//   container.appendChild(htmlWrapper);
+//   container.appendChild(script);
+// }, [srcDoc, htmlCode, cssCode, jsCode]);
 
 
   
@@ -403,7 +443,7 @@ const CharityWebsite = () => {
             >
               <Typography 
                 variant="h6" 
-                className="font-light mb-2 text-amber-200 tracking-widest uppercase text-sm"
+                className="font-light mb-2  tracking-widest uppercase text-sm"
               >
                 Uniting Hearts, Changing Lives
               </Typography>
@@ -417,8 +457,9 @@ const CharityWebsite = () => {
               <Typography 
                 variant="h1" 
                 className="font-bold text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight"
+                sx={{ fontFamily: palettes.text.headingFont, fontWeight: palettes.text.headingWeight }}
               >
-                <span className="text-amber-200">Empowering</span> Every Child's Potential
+                <span className="">Empowering</span> Every Child's Potential
               </Typography>
             </motion.div>
 
@@ -429,7 +470,9 @@ const CharityWebsite = () => {
             >
               <Typography 
                 variant="body1" 
-                className="!mb-8 max-w-lg text-lg leading-relaxed text-amber-100"
+                className="!mb-8 max-w-lg text-lg leading-relaxed"
+              sx={{ fontFamily: palettes.text.subheadingFont, fontWeight: palettes.text.subheadingFont, color:'#E6EDE7' }}
+
               >
                 At Joyful Minds, we believe in the unique potential of every child. Our mission is to help them thrive through personalized support and community-driven programs.
               </Typography>
@@ -465,7 +508,8 @@ const CharityWebsite = () => {
               >
                 <Button 
                   variant="outlined" 
-                  className="border-2 border-amber-300 text-amber-300 hover:bg-amber-300/10 font-bold px-8 py-3 rounded-lg hover:shadow-lg transition-all"
+                  className="border-2   hover:bg-amber-300/10 font-bold px-8 py-3 rounded-lg hover:shadow-lg transition-all"
+                  sx={{color: 'white'}}
                 >
                   Learn More
                 </Button>
@@ -510,38 +554,58 @@ const CharityWebsite = () => {
       </section>
       {/* Services Section */}
       <section className="py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">Our Services</h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto mb-6 rounded-full"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We're dedicated to making a positive impact through these essential services
-          </p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
-          ))}
-        </div>
-      </div>
-    </section>
+  {/* Shared container for consistent alignment */}
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-16"
+    >
+      <Typography
+        variant="h4"
+        component="h2"
+        className="text-3xl font-bold mb-4 text-gray-800"
+        sx={{
+          fontFamily: palettes.text.headingFont,
+          fontWeight: palettes.text.headingWeight,
+        }}
+      >
+        Our Services
+      </Typography>
+      <div className="w-24 h-1 bg-amber-500 mx-auto mb-6 rounded-full"></div>
+      <Typography
+        className="text-gray-600 mx-auto text-center"
+        sx={{
+          fontFamily: palettes.text.subheadingFont,
+          fontWeight: palettes.text.subheadingFont,
+          textAlign: 'center',
+        }}
+      >
+        We're dedicated to making a positive impact through these essential services
+      </Typography>
+    </motion.div>
 
-      {/* Featured Causes */}
-      <div>
-      {/* Other sections */}
-      <InitiativesSection />
-      {/* Other sections */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <ServiceCard key={index} service={service} index={index} />
+      ))}
     </div>
+  </div>
+</section>
+
+{/* Featured Causes / Initiatives Section */}
+<section className="py-24 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    {/* The InitiativesSection should also follow the same padding structure */}
+    <InitiativesSection />
+  </div>
+</section>
+
 
       {/* Impact Section */}
-      <section className="py-24 bg-gradient-to-br from-white to-amber-50 overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <section className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 max-w-7xl ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Image Gallery Side */}
           <motion.div
@@ -551,7 +615,7 @@ const CharityWebsite = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="grid grid-cols-6 gap-4 relative z-10">
+            <div className="grid grid-cols-6 gap-4 relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
               {/* Main image */}
               <motion.div 
                 className="col-span-4 row-span-2 relative h-64 md:h-80 shadow-xl rounded-2xl overflow-hidden"
@@ -691,7 +755,7 @@ const CharityWebsite = () => {
     </section>
 
       {/* Volunteers Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-amber-100 relative overflow-hidden ">
+      <section className="py-20 bg-white relative overflow-hidden ">
   {/* Decorative elements */}
   <div className="absolute top-0 left-0 w-full h-full opacity-5">
     <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-amber-300 blur-xl"></div>
@@ -710,13 +774,17 @@ const CharityWebsite = () => {
       <Typography 
         variant="h3" 
         component="h2" 
-        className="text-center font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-800"
+        className="text-center font-bold mb-4 text-transparent container mx-auto px-4 sm:px-6 lg:px-8 "
+        sx={{ fontFamily: palettes.text.headingFont, fontWeight: palettes.text.headingWeight, color : ' #363636' }}
+
       >
         Our Dream Team
       </Typography>
       <Typography 
         variant="body1" 
-        className="text-center text-gray-600 max-w-2xl mx-auto text-lg"
+        className="text-center text-gray-600  mx-auto text-lg"
+    sx={{ fontFamily: palettes.text.subheadingFont, fontWeight: palettes.text.subheadingFont }}
+
       >
         The passionate individuals who make our mission possible every day
       </Typography>
@@ -865,20 +933,29 @@ const CharityWebsite = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-gradient-to-br from-violet-50 to-indigo-50">
+      <Box className="py-20 " sx={{ backgroundColor:'#fff' }}>
   <Container>
-    <div className="text-center mb-16">
-      <Typography 
-        variant="h3" 
-        component="h2" 
-        className="text-center font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600"
-      >
-        Voices of Impact
-      </Typography>
-      <Typography variant="body1" className="!text-center text-gray-600 max-w-2xl mx-auto text-lg">
-        Hear from those who've experienced our work firsthand
-      </Typography>
-    </div>
+  <div className="text-center mb-16 w-full flex flex-col items-center">
+  <Typography 
+    variant="h3" 
+    component="h2" 
+    className="font-bold mb-4 text-transparent"
+    sx={{ fontFamily: palettes.text.headingFont, fontWeight: palettes.text.headingWeight,color:'#D97706' }}
+
+  >
+    Voices of Impact
+  </Typography>
+  
+  <Typography 
+    variant="body1" 
+    className="text-gray-600 text-lg max-w-2xl" 
+    style={{ textAlign: 'center' }}
+    sx={{fontFamily: palettes.text.subheadingFont, fontWeight: palettes.text.subheadingWeight }}
+  >
+    Hear from those who've experienced our work firsthand
+  </Typography>
+</div>
+
     
     <Grid container spacing={6}>
       {[
@@ -957,10 +1034,11 @@ const CharityWebsite = () => {
       </Button>
     </div>
   </Container>
-</section>
+</Box>
 
       {/* Stats */}
-      <section className="py-16 bg-gradient-to-br from-amber-50 to-amber-100">
+      <Box className="py-16 bg-gray-200"
+      sx={{ backgroundColor:'#F4F7F5' }}>
   <Container>
     <Grid container spacing={4} className="justify-center">
       {[
@@ -978,7 +1056,7 @@ const CharityWebsite = () => {
           className="group transition-all duration-300 hover:scale-105"
         >
           <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-white flex flex-col items-center h-full">
-            <span className="text-4xl mb-3 opacity-80 group-hover:opacity-100 transition-opacity">
+            <span className="text-4xl mb-3 opacity-80 group-hover:opacity-100 transition-opacity text-amber-600">
               {stat.icon}
             </span>
             <Typography 
@@ -998,7 +1076,17 @@ const CharityWebsite = () => {
       ))}
     </Grid>
   </Container>
-</section>
+</Box>
+
+{/* {srcDoc && (
+  <iframe
+    srcDoc={srcDoc}
+    title="Custom Content"
+    sandbox="allow-scripts"
+    className="w-full h-[600px] border rounded-xl"
+  />
+)} */}
+
 
       {/* Footer */}
       <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-16 pb-8 relative overflow-hidden">
