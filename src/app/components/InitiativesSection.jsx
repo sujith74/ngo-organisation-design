@@ -168,7 +168,7 @@ export function InitiativesSection() {
                     
                     <div className="mb-2 w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
                       <motion.div 
-                        className="bg-gradient-to-r from-amber-500 to-amber-400 h-2.5 rounded-full"
+                        className="bg-amber-600 h-2.5 rounded-full"
                         variants={progressVariants}
                         initial="initial"
                         animate="animate"
