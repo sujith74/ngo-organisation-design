@@ -35,7 +35,8 @@ import {
   Users,
   ArrowRight,
   ChevronRight, Heart, BookOpen, Activity, 
-
+  Rocket,
+  Handshake
 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -862,10 +863,10 @@ const CharityWebsite = () => {
                       whileHover={{ y: -3 }}
                       className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-amber-100 hover:text-amber-600 transition-colors"
                     >
-                      <span className="text-sm">{platform === 'twitter' ? '🐦' : 
+                      {/* <span className="text-sm">{platform === 'twitter' ? '🐦' : 
                         platform === 'linkedin' ? '🔗' : 
                         platform === 'instagram' ? '📷' : 
-                        platform === 'github' ? '💻' : '👍'}</span>
+                        platform === 'github' ? '💻' : '👍'}</span> */}
                     </motion.div>
                   ))}
                 </div>
@@ -1044,11 +1045,43 @@ const CharityWebsite = () => {
   <Container>
     <Grid container spacing={4} className="justify-center">
       {[
-        { value: "580", label: "Volunteers", icon: "👥" },
-        { value: "980", label: "Donations", icon: "❤️" },
-        { value: "887", label: "Projects", icon: "🚀" },
-        { value: "320", label: "Partners", icon: "🤝" }
-      ].map((stat, index) => (
+  {
+    value: "580",
+    label: "Volunteers",
+    icon: (
+      <div className="bg-amber-100 p-2 rounded-lg mr-4">
+        <Users size={20} className="text-amber-600" />
+      </div>
+    ),
+  },
+  {
+    value: "980",
+    label: "Donations",
+    icon: (
+      <div className="bg-amber-100 p-2 rounded-lg mr-4">
+        <Heart size={20} className="text-amber-600" />
+      </div>
+    ),
+  },
+  {
+    value: "887",
+    label: "Projects",
+    icon: (
+      <div className="bg-amber-100 p-2 rounded-lg mr-4">
+        <Rocket size={20} className="text-amber-600" />
+      </div>
+    ),
+  },
+  {
+    value: "320",
+    label: "Partners",
+    icon: (
+      <div className="bg-amber-100 p-2 rounded-lg mr-4">
+        <Handshake size={20} className="text-amber-600" />
+      </div>
+    ),
+  },
+].map((stat, index) => (
         <Grid 
           item 
           xs={12} 
