@@ -34,7 +34,9 @@ import {
   Scale, 
   Users,
   ArrowRight,
-  ChevronRight, Heart, BookOpen, Activity
+  ChevronRight, Heart, BookOpen, Activity, 
+
+
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { InitiativesSection } from './components/InitiativesSection';
