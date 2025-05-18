@@ -6,7 +6,7 @@ import { usePalette } from "../context/PaletteContext.jsx";
 import { Button, Card, CardContent, Typography } from "@mui/material";
 
 // Options
-const colorOptions = [ 
+const colorOptions = [  
   { label: "Royal Blue", value: "#2563EB", dark: "#1E40AF" },
   { label: "Emerald Green", value: "#10B981", dark: "#047857" },
   { label: "Warm Yellow", value: "#FACC15", dark: "#CA8A04" },
@@ -16,7 +16,8 @@ const colorOptions = [
   { label: "Charcoal Gray", value: "#374151", dark: "#1F2937" },
   { label: "Turquoise Blue", value: "#06B6D4", dark: "#0E7490" },
   { label: "Rose Pink", value: "#F43F5E", dark: "#BE123C" },
-  { label: "Dark Gray", value: "#363636", dark: "#1E1E1E" }
+  { label: "Dark Gray", value: "#363636", dark: "#1E1E1E" },
+  { label: "Amber", value: "#d97706", dark: "#a27c0f" }
 ];
 
 const buttonRadiusOptions = [

@@ -459,7 +459,7 @@ const CharityWebsite = () => {
                 className="font-bold text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight"
                 sx={{ fontFamily: palettes.text.headingFont, fontWeight: palettes.text.headingWeight }}
               >
-                <span className="">Empowering</span> Every Child's Potential
+                <span className="text-amber-200">Empowering</span> Every Child's Potential
               </Typography>
             </motion.div>
 
@@ -509,7 +509,7 @@ const CharityWebsite = () => {
                 <Button 
                   variant="outlined" 
                   className="border-2   hover:bg-amber-300/10 font-bold px-8 py-3 rounded-lg hover:shadow-lg transition-all"
-                  sx={{color: 'white'}}
+                  sx={{color: 'white', borderColor:'#fff'}}
                 >
                   Learn More
                 </Button>
@@ -933,7 +933,7 @@ const CharityWebsite = () => {
       </section>
 
       {/* Testimonials */}
-      <Box className="py-20 " sx={{ backgroundColor:'#fff' }}>
+      <Box className="py-20 "  sx={{ backgroundColor:'#F4F7F5' }}>
   <Container>
   <div className="text-center mb-16 w-full flex flex-col items-center">
   <Typography 
