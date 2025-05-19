@@ -95,8 +95,8 @@ export function InitiativesSection() {
   return (
     <section className="py-16 bg-white">
       <Container>
-        <Typography variant="h4" component="h2" className="text-center font-bold !mb-2 text-amber-600" 
-           sx={{ fontFamily: palettes.text.headingFont, fontWeight: palettes.text.headingWeight, mb:2 }}
+        <Typography variant="h4" component="h2" className="text-center font-bold !mb-2 " 
+           sx={{ fontFamily: palettes.text.headingFont, fontWeight: palettes.text.headingWeight, mb:2, color:palettes.secondary.main }}
 
         >
           {pathname === '/initiatives' ? 'All Initiatives' : 'Featured Causes'}
@@ -252,7 +252,7 @@ export function InitiativesSection() {
     fontWeight: 600,
     textTransform: 'none',
     color: palettes.secondary.contrastText,
-    background: ` ${palettes.secondary.main} `,
+    background: `#D97706 `,
     '&:hover': {
       background: ` ${palettes.secondary.dark} `,
     }

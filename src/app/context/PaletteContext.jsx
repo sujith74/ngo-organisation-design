@@ -12,7 +12,7 @@ const defaultPalette = {
   },
   secondary: {
     light: "#eecd5e",
-    main: "#D97706",
+    main: "#363636",
     dark: "#d5a916",
     contrastText: "#fff",
     radius: "12px", // default button radius
